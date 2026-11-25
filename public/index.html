@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedClick | Consultorio digital</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main id="authView" class="auth-layout">
+    <section class="hero">
+      <header class="brand">
+        <img src="assets/logo-medclick.svg" alt="Logo MedClick" onerror="this.style.display='none'">
+        <strong>Med<span>Click</span></strong>
+      </header>
+      <div class="hero-copy">
+        <span class="eyebrow">● CONSULTORIO DIGITAL</span>
+        <h1>Tu consulta médica,<br> a un <em>click.</em></h1>
+        <p>Teleorientación médica, historial clínico y recetas digitales.</p>
+        <ul class="benefits">
+          <li>▣ Teleorientación con enlace de videollamada</li>
+          <li>▤ Historial clínico y signos vitales</li>
+          <li>♧ Recetas e informes imprimibles en PDF</li>
+          <li>◇ Pacientes con acceso de solo lectura</li>
+        </ul>
+      </div>
+      <div class="team">
+        <small>NUESTRO EQUIPO MÉDICO</small>
+        <div class="team-grid">
+          <article><img src="assets/DrFer.jpeg" alt="Profesional de medicina general"><b>Dr. Fernando Guzman</b><span>Medicina general</span></article>
+          <article><img src="assets/DraRebeca.jpeg" alt="Profesional de medicina general"><b>Dra. Rebeca Echeverria</b><span>Medicina general</span></article>
+          <article><img src="assets/DrMiguel.jpeg" alt="Profesional de Imagenología"><b>Dr. Miguel Huanca</b><span>Medico  Ecografista</span></article>
+        </div>
+      </div>
+    </section>
+    <section class="auth-side">
+      <div class="auth-card" id="loginCard">
+        <h2>Accede a tu cuenta</h2><p class="muted">Selecciona cómo deseas ingresar</p>
+        <label>Tipo de usuario</label>
+        <select id="loginRole"><option value="PACIENTE">Paciente</option><option value="MEDICO">Médico</option><option value="ADMIN">Administrador</option></select>
+        <label>Correo, carnet o matrícula</label><input id="loginId" autocomplete="username" placeholder="Ingresa tu identificador">
+        <label>Clave de seguridad</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Tu contraseña">
+        <button class="btn primary full" id="loginBtn">Iniciar sesión</button>
+        <p class="switch">¿Aún no tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+      </div>
+      <div class="auth-card hidden" id="registerCard">
+        <h2>Crear cuenta</h2><p class="muted">Regístrate como:</p>
+        <div class="tabs"><button class="tab active" data-kind="PACIENTE">Paciente</button><button class="tab" data-kind="MEDICO">Médico</button></div>
+        <form id="registerForm">
+          <div id="patientFields">
+            <label>Nombre completo</label><input name="nombre" required>
+            <label>Cédula de identidad</label><input name="carnet" required>
+            <label>Fecha de nacimiento</label><input name="fechaNacimiento" type="date" required>
+            <label>Edad (calculada automáticamente)</label><input id="edad" disabled placeholder="Se calcula con tu fecha de nacimiento">
+            <label>Sexo</label><select name="sexo"><option value="">Seleccionar</option><option>Femenino</option><option>Masculino</option><option>Otro</option></select>
+            <label>Correo electrónico</label><input name="correo" type="email" required>
+          </div>
+          <div id="doctorFields" class="hidden">
+            <label>Nombre completo</label><input name="nombreMedico">
+            <label>Matrícula profesional</label><input name="matricula">
+            <label>Correo electrónico</label><input name="correoMedico" type="email">
+          </div>
+          <label>Contraseña (mínimo 8 caracteres)</label><input name="password" type="password" minlength="8" required>
+          <label>Confirmar contraseña</label><input name="confirmPassword" type="password" minlength="8" required>
+          <p class="notice" id="registerNotice">El paciente se registra gratuitamente y podrá consultar su historial.</p>
+          <button class="btn primary full" type="submit" id="registerBtn">Registrarme como paciente</button>
+        </form>
+        <p class="switch">¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión</a></p>
+      </div>
+      <p class="copyright">© 2026 MedClick · Plataforma de gestión médica</p>
+    </section>
+  </main>
+
+  <main id="appView" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="brand side-brand"><img src="assets/logo-medclick.svg" alt=""><strong>Med<span>Click</span></strong></div>
+      <nav id="navigation"></nav>
+      <button id="logoutBtn" class="logout">↪ Cerrar sesión</button>
+    </aside>
+    <section class="workspace">
+      <header class="topbar"><div><span class="muted">CONSULTORIO DIGITAL</span><h2 id="welcome">Bienvenido</h2></div><div class="user-chip" id="userChip"></div></header>
+      <div id="content" class="content"></div>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
